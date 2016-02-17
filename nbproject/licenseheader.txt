@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Ujikom 2016 SMK Pasim
+${licensePrefix}Rismawan Junandia ${licensePrefix}
+<#if licenseLast??>
+${licenseLast}
+</#if>
