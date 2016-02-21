@@ -8,7 +8,7 @@ include '../koneksi.php';
 date_default_timezone_set('Asia/Jakarta');
 $tgl = date('Y-m-d');
 $NoPasien       = $_POST['NoPasien'];
-$NmPasien       = $_POST['NmPasien'];
+$NmPasien       = strtoupper($_POST['NmPasien']);
 $J_Kel          = $_POST['J_Kel'];
 $Agama          = $_POST['Agama'];
 $Alamat         = $_POST['Alamat'];

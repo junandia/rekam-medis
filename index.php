@@ -7,41 +7,25 @@
  */
 include 'session.php';
 ?>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Sistem Informasi Rekam Medis</title>
-        <link href="style.css" rel="stylesheet">
-        <link href="ckeditor/contents.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="jquery.dataTables.min.css">
-        <script type="text/javascript" src="jquery.dataTables.min.js"></script>
+<head>
+    <title>REKAM MEDIS</title>
+    <link rel="stylesheet" type="text/css" href="asset/css/metro.css">
+    <link rel="stylesheet" type="text/css" href="asset/css/metro-icons.css">
+    <link rel="stylesheet" type="text/css" href="asset/css/metro-responsive.css">
+    <script type="text/javascript" src="asset/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="asset/js/metro.js"></script>
+    <script type="text/javascript" src="asset/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<?php
+include 'menu.php';
+include 'hal.php';
+?>
+<footer>
+    <p align="center"><strong><i>2016 Uji Kompetensi Kejuruan</i></strong></p>
+</footer>
 
-    </head>
-    <body>
-        <header>
-            <?php
-            $level = $_SESSION['level'];
-            if ($level == "3"){
-                include 'head/admin.php';
-            }
-            elseif ($level == "2") {
-                include 'head/petugas.php';
-            }
-            else {
-                include 'head/dokter.php';
-            }
-            ?>
-        </header>
-        <section id="content"><?php  @include 'hal.php'; ?></section>
-
-        <script type="text/javascript">
-    $(document).ready(function(){
-    $('#table').DataTable();
-});
-    </script>
-    <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
-        <footer>
-            © 2016 RS Pasim Sukabumi - <a href="about.html">Junandia Group</a>
-        </footer>
-    </body>
+</body>
 </html>
