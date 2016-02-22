@@ -11,5 +11,5 @@ $query = "DELETE FROM tbpasien WHERE NoPasien='$NoPasien'";
 $aksi = mysql_query($query);
 
 if ($aksi) {
-    echo "<script>alert('Data Berhasil Di Hapus'); window.location='../index.php?hal=lpasien';</script>";
+    echo "<script>alert('Data Berhasil Di Hapus'); window.location='../index.php?page=./pasien/index';</script>";
 }

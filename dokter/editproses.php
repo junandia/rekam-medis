@@ -7,9 +7,9 @@
 
 include '../koneksi.php';
 $Kd_Dokter          = $_POST['Kd_Dokter'];
-$NmDokter           = $_POST['NmDokter'];
+$NmDokter           = strtoupper($_POST['NmDokter']);
 $TmpLahir           = $_POST['TmpLahir'];
-$TglLahir           = $_POST['TglLahir'];
+$TglLahir		    = date('Y-m-d', strtotime($_POST['TglLahir']));
 $Alamat             = $_POST['Alamat'];
 $NoTelp             = $_POST['NoTelp'];
 $Kd_Poli            = $_POST['Kd_Poli'];

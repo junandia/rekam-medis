@@ -10,7 +10,7 @@ include 'session.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>REKAM MEDIS</title>
+    <title>Sistem Informasi Rekam Medis</title>
     <link rel="stylesheet" type="text/css" href="asset/css/metro.css">
     <link rel="stylesheet" type="text/css" href="asset/css/metro-icons.css">
     <link rel="stylesheet" type="text/css" href="asset/css/metro-responsive.css">

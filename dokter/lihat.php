@@ -9,15 +9,11 @@ include 'koneksi.php';
 $query = mysql_query("SELECT * FROM tbdokter JOIN poliklinik ON tbdokter.Kd_Poli = poliklinik.KdPoli");
 ?>
 
-    <table id="table" border="1" width="100%" cellspacing="1" cellpadding="3">
+    <table class="dataTable table cell-hovered border bordered" data-role="datatable" data-searching="true">
     <thead>
         <tr>
             <td>Kode Dokter</td>
             <td>Nama Dokter</td>
-            <td>Tempat Lahir</td>
-            <td>Tanggal Lahir</td>
-            <td>Alamat</td>
-            <td>No Telpon</td>
             <td>Nama Poli</td>
             <?php
             if ($level == "3"){
@@ -36,20 +32,15 @@ while ($r = mysql_fetch_array($query)) {
         <tr>
             <td><?php echo $kd = $r['Kd_Dokter']; ?></td>
             <td><?php echo $r['NmDokter']; ?></td>
-            <td><?php echo $r['TmpLahir']; ?></td>
-            <td>
-            <?php echo date('d-F-Y', strtotime($r['TglLahir'])); ?>
-            </td>
-            <td><?php echo $r['Alamat']; ?></td>
-            <td><?php echo $r['NoTelp']; ?></td>
             <td><?php echo $r['NmPoli']; ?></td>
             <?php
-            if ($level == "3"){
+            if ($_SESSION['level'] == "3" || $_SESSION['level'] == "2"){
             ?>
-            <td><button onclick="window.location='index.php?hal=EditDokter&KdDokter=<?php echo $kd; ?>'">Edit</button> <button onclick="window.location='dokter/hapus.php?KdDokter=<?php echo $kd; ?>'">Hapus</button></td>
+            <td><button class="button warning" onclick="window.location='index.php?page=./dokter/index&KdDokter=<?php echo $kd; ?>'">Ubah</button> <button class="button danger" onclick="window.location='dokter/hapus.php?KdDokter=<?php echo $kd; ?>'">Hapus</button></td>
             <?php
             }
             ?>
+
         </tr>
 <?php 
 }

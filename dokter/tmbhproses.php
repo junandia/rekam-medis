@@ -6,14 +6,14 @@
  */
 include '../koneksi.php';
 $Kd_Dokter          = $_POST['Kd_Dokter'];
-$NmDokter           = $_POST['NmDokter'];
+$NmDokter           = strtoupper($_POST['NmDokter']);
 $TmpLahir           = $_POST['TmpLahir'];
-$TglLahir           = $_POST['TglLahir'];
+$TglLahir		    = date('Y-m-d', strtotime($_POST['TglLahir']));
 $Alamat             = $_POST['Alamat'];
 $NoTelp             = $_POST['NoTelp'];
 $Kd_Poli            = $_POST['Kd_Poli'];
 $password           = md5($_POST['password']);
-$username           = $_POST['username'];
+$username           = $Kd_Dokter;
 $cekKdq = mysql_query("SELECT * FROM login ORDER BY Kd_User ASC");
 while ($cekLKd = mysql_fetch_array($cekKdq)) {
 $Kd = $cekLKd['Kd_User'];
@@ -24,6 +24,6 @@ $query = mysql_query("INSERT INTO tbdokter VALUES('$Kd_Dokter','$NmDokter','$Tmp
 $login = mysql_query("INSERT INTO login VALUES('$Kd_User','$username','$password','1','Y')") or die(mysql_error()); 
 
 if ($query && $login) {
-    echo "<script>alert('Dokter Berhasil Ditambahkan'); window.location='../index.php?hal=ldokter';</script>";
+    echo "<script>alert('Dokter Berhasil Ditambahkan'); window.location='../index.php?page=./dokter/index';</script>";
 }
 ?>
