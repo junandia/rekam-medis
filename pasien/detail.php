@@ -1,9 +1,14 @@
 <?php
+<<<<<<< HEAD
 	include 'koneksi.php';
+=======
+		include 'koneksi.php';
+>>>>>>> origin/master
         $nopasien = $_GET['no'];
         $query = mysql_query("SELECT * FROM tbpasien WHERE NoPasien = '$nopasien'") or die(mysql_error());
         $r = mysql_fetch_array($query);
 ?>
+<<<<<<< HEAD
 <br/><br/>
 <table border="1" align="center" width="50%">
     <tr> 
@@ -14,16 +19,32 @@
 	</tr>
 	<tr align="center">
 		<td align="left">Kode Pasien</td>
+=======
+<table border="0" width="25%" align="center">
+	<tr align="center">
+		<td colspan="3"><img src="pasien/foto/<?php echo $r['Foto']; ?>" width="150" height="150"></td>
+	</tr>
+	<tr align="center">
+		<td align="left">NoPasien</td>
+>>>>>>> origin/master
 		<td>:</td>
 		<td align="left"><?php echo $r['NoPasien']; ?></td>
 	</tr>
 	<tr align="center">
+<<<<<<< HEAD
 		<td align="left">Nama Pasien</td>
+=======
+		<td align="left">NmPasien</td>
+>>>>>>> origin/master
 		<td>:</td>
 		<td align="left"><?php echo $r['NmPasien']; ?></td>
 	</tr>
 	<tr align="center">
+<<<<<<< HEAD
 		<td align="left">Jenis Kelamin</td>
+=======
+		<td align="left">J_Kel</td>
+>>>>>>> origin/master
 		<td>:</td>
 		<td align="left"><?php echo $r['J_Kel']; ?></td>
 	</tr>
@@ -38,11 +59,16 @@
 		<td align="left"><?php echo $r['Alamat']; ?></td>
 	</tr>
 	<tr align="center">
+<<<<<<< HEAD
 		<td align="left">Tempat Lahir</td>
+=======
+		<td align="left">Tmp_Lahir</td>
+>>>>>>> origin/master
 		<td>:</td>
 		<td align="left"><?php echo $r['Tmp_Lahir']; ?></td>
 	</tr>
 	<tr align="center">
+<<<<<<< HEAD
 		<td align="left">Tanggal Lahir</td>
 		<td>:</td>
 		<td align="left"><?php echo date('d-M-Y', strtotime($r['Tgl_Lahir'])); ?></td>
@@ -56,14 +82,35 @@
 		<td align="left">Tanggal Registrasi</td>
 		<td>:</td>
 		<td align="left"><?php echo date('d-M-Y', strtotime($r['Tgl_Registrasi'])); ?></td>
+=======
+		<td align="left">Tgl_Lahir</td>
+		<td>:</td>
+		<td align="left"><?php echo $r['Tgl_Lahir']; ?></td>
+	</tr>
+	<tr align="center">
+		<td align="left">No_Telp</td>
+		<td>:</td>
+		<td align="left">+62<?php echo $r['No_Telp']; ?></td>
+	</tr>
+	<tr align="center">
+		<td align="left">Tgl_Registrasi</td>
+		<td>:</td>
+		<td align="left"><?php echo $r['Tgl_Registrasi']; ?></td>
+>>>>>>> origin/master
 	</tr>
 	<?php
                 if ($_SESSION['level'] == "2" || $_SESSION['level'] == "3") {
             ?>
              <tr>
+<<<<<<< HEAD
 		<td align="right"><a href="index.php?page=./pasien/index" class="button primary">Kembali</a></td>
 		<td></td>
 		<td align="right"><a href="./pasien/cetak.php?no=<?php echo $nopasien;?>" target='_blank'  class="button info">Cetak</a></td>
+=======
+		<td align="left"><a href="index.php?page=./pasien/index" class="button primary">Kembali</a></td>
+		<td></td>
+		<td align="right"><button onclick="window.location='./pasien/cetak.php?no=<?php echo $nopasien;?>';" class="button info">Cetak Kartu Pasien</a></td>
+>>>>>>> origin/master
 	</tr>
             <?php
                 }
@@ -75,6 +122,7 @@
 	<?php
 }
 	?>
+<<<<<<< HEAD
 </table>
         </td>
     </tr>
@@ -108,3 +156,6 @@ $query = mysql_query("SELECT * FROM rekammedis WHERE No_Pasien = '$nopasien'");
     </tbody>
     </table>
 
+=======
+</table>
+>>>>>>> origin/master

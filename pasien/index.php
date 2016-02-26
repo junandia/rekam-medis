@@ -5,7 +5,11 @@
  * Rismawan Junandia  * 
  */
 include 'koneksi.php';
+<<<<<<< HEAD
 $all = mysql_query("SELECT * FROM tbpasien WHERE tampil='1'") or die(mysql_error());
+=======
+$all = mysql_query("SELECT * FROM tbpasien") or die(mysql_error());
+>>>>>>> origin/master
 if ($_SESSION['level'] == "3" || $_SESSION['level'] == "2") {
     $query = mysql_query("SELECT * FROM tbpasien") or die(mysql_error());
     $cekq = mysql_num_rows($query);
@@ -161,7 +165,11 @@ else {
                 <td>Tanggal Lahir</td>
                 <td>:</td>
                 <td>
+<<<<<<< HEAD
                     <div class="input-control text" data-role="datepicker" data-date="1972-12-21" data-format="yyyy-mm-dd">
+=======
+                    <div class="input-control text" data-role="datepicker">
+>>>>>>> origin/master
                         <input type="text" name="Tgl_Lahir" <?= $x ?> value="<?php echo $e; ?>" >
                         <button class="button"><span class="mif-calendar"></span></button>
                     </div>
@@ -171,7 +179,11 @@ else {
                 <td>No Telpon</td>
                 <td>:</td>
                 <td><div class="input-control text">
+<<<<<<< HEAD
                 <input type="number" name="No_Telp" value="<?php echo $f; ?>" <?= $x ?>  maxlength="14" />
+=======
+                <input type="number" name="No_Telp" value="<?php echo $f; ?>" <?= $x ?>  maxlength="13" />
+>>>>>>> origin/master
                 </div></td>
             </tr>
             <tr>

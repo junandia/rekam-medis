@@ -4,7 +4,11 @@
     <ul class="app-bar-menu">
     <?php if ($_SESSION['level'] == "3" || $_SESSION['level'] == "2") {?>
         <li>
+<<<<<<< HEAD
             <a href="" class="dropdown-toggle"><span class="mif-medium"></span></a>
+=======
+            <a href="" class="dropdown-toggle"><span class="mif-medium"></span>aster Data</a>
+>>>>>>> origin/master
             <ul class="d-menu" data-role="dropdown">
                 <li><a href="index.php?page=./pasien/index">Pasien</a></li>
                 <li><a href="index.php?page=./dokter/index">Dokter</a></li>
@@ -20,9 +24,12 @@
                 <li><a href="index.php?page=./laporan/kunjungan">Laporan Data Kunjungan</a></li>
             </ul>
         </li>
+<<<<<<< HEAD
         <?php }else{ ?>
                     <a class="app-bar-element" href="index.php?page=./kunjungan/index"><span class="mif-ambulance"> Kunjungan</span></a>
 
+=======
+>>>>>>> origin/master
         <li>
             <a href="" class="dropdown-toggle"><span class="mif-ambulance"></span> RMedis</a>
             <ul class="d-menu" data-role="dropdown">
@@ -30,8 +37,12 @@
                 <li><a href="index.php?page=./rekamedis&waktu=allday">Semua</a></li>
             </ul>
         </li>
+<<<<<<< HEAD
         <?php } ?>
+=======
+>>>>>>> origin/master
     </ul>
+            <a class="app-bar-element" href="index.php?page=./kunjungan/index"><span class="mif-ambulance"> Kunjungan</span></a>
         <div class="app-bar-element place-right">
 
         <a class="dropdown-toggle fg-white"><span class="mif-pencil"></span> Pengaturan</a>

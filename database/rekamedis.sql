@@ -3,9 +3,15 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Feb 26, 2016 at 05:32 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
+=======
+-- Generation Time: Feb 21, 2016 at 02:28 PM
+-- Server version: 5.6.26
+-- PHP Version: 5.5.28
+>>>>>>> origin/master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,7 +38,11 @@ CREATE TABLE IF NOT EXISTS `login` (
   `Password` varchar(70) NOT NULL,
   `level` int(1) NOT NULL,
   `aktif` varchar(1) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+>>>>>>> origin/master
 
 --
 -- Dumping data for table `login`
@@ -40,9 +50,13 @@ CREATE TABLE IF NOT EXISTS `login` (
 
 INSERT INTO `login` (`Kd_User`, `Username`, `Password`, `level`, `aktif`) VALUES
 (1, 'SuperAdmin', 'aec60231d83fe6cf81444bc536596887', 3, 'Y'),
+<<<<<<< HEAD
 (2, 'junandia', 'aec60231d83fe6cf81444bc536596887', 1, 'Y'),
 (3, 'DR02', 'aec60231d83fe6cf81444bc536596887', 1, 'Y'),
 (4, 'PTG02', '7246c1256b84017a6fafdbdca9b19950', 2, 'Y');
+=======
+(2, 'junandia', 'aec60231d83fe6cf81444bc536596887', 1, 'Y');
+>>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -62,8 +76,13 @@ CREATE TABLE IF NOT EXISTS `petugas` (
 --
 
 INSERT INTO `petugas` (`Kd_Petugas`, `Nm_Petugas`, `Bagian`, `Kd_User`) VALUES
+<<<<<<< HEAD
 ('P01', 'Rismawan Junandia', '3', 1),
 ('PTG02', 'Rifky Akbar', '2', 4);
+=======
+('P01', 'Rismawan', '3', 1),
+('P02', 'Rifky', '2', 2);
+>>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -131,8 +150,12 @@ CREATE TABLE IF NOT EXISTS `tbdokter` (
 --
 
 INSERT INTO `tbdokter` (`Kd_Dokter`, `NmDokter`, `TmpLahir`, `TglLahir`, `Alamat`, `NoTelp`, `Kd_Poli`, `Kd_User`) VALUES
+<<<<<<< HEAD
 ('DR01', 'DR. JUNANDIA', 'smi ', '1998-10-18', 'Jl. Karamat no 2 ', '0856597365694', '1 ', 2),
 ('DR02', 'DR. RISMAWAN', 'Sukabumi ', '1970-01-01', 'jl ', '002', '3 ', 3);
+=======
+('DR0', 'Dr. Jun', 'smi', '1998-10-18', 'Jl. Karamat no 2', '0856597365694', '1', 2);
+>>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -147,17 +170,25 @@ CREATE TABLE IF NOT EXISTS `tbkunjungan` (
   `KdPoli` varchar(2) NOT NULL,
   `JamKunjungan` time NOT NULL,
   `No_Antrian` int(3) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+>>>>>>> origin/master
 
 --
 -- Dumping data for table `tbkunjungan`
 --
 
 INSERT INTO `tbkunjungan` (`IdKunjungan`, `TglKunjungan`, `NoPasien`, `KdPoli`, `JamKunjungan`, `No_Antrian`) VALUES
+<<<<<<< HEAD
 (1, '2016-02-17', 'PSN04', '1', '15:51:56', 1),
 (2, '2016-02-23', 'PSN04', '1', '08:05:31', 1),
 (3, '2016-02-26', 'PSN04', '1', '10:48:25', 1),
 (4, '2016-02-26', 'PSN01', '3', '10:50:56', 2);
+=======
+(1, '2016-02-17', 'PSN04', '1', '15:51:56', 1);
+>>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -183,12 +214,19 @@ CREATE TABLE IF NOT EXISTS `tbpasien` (
 --
 
 INSERT INTO `tbpasien` (`NoPasien`, `NmPasien`, `J_Kel`, `Agama`, `Alamat`, `Tmp_Lahir`, `Tgl_Lahir`, `No_Telp`, `Foto`, `Tgl_Registrasi`) VALUES
+<<<<<<< HEAD
 ('PSN01', 'DEA AUDINA', 'P', 'Islam ', 'a ', 'a ', '2016-01-06', '1', 'anim.gif', '2016-01-04'),
 ('PSN02', 'RISMAWAN', 'L', 'Islam ', 'aa ', 'aa ', '2016-01-05', '00', 'anim.gif', '2016-01-08'),
 ('PSN03', 'JUNANDIA', 'L', 'Islam  ', 'Jl.Karamat ', 'smi  ', '1998-02-21', '8565973569', '12358286_1198628856820656_119498568_n.jpg', '2016-01-27'),
 ('PSN04', 'SAHA WAE', 'P', 'Budha', 'indonesia', 'sukabumi', '1970-01-01', '666', 'Screenshot_2.png', '2016-02-21'),
 ('PSN05', 'RIFKY', 'L', 'Islam', 'a', 'a', '1970-01-01', '080808', 'Koala.jpg', '2016-02-23'),
 ('PSN06', 'A', 'P', 'Kristen Katolik ', 'a ', 'a ', '1970-01-01', '2', 'Lighthouse.jpg', '2016-02-23');
+=======
+('1', 'DEA AUDINA', 'P', 'Islam ', 'a ', 'a ', '2016-01-06', '1', 'anim.gif', '2016-01-04'),
+('99', 'RISMAWAN', 'L', 'Islam ', 'aa ', 'aa ', '2016-01-05', '00', 'anim.gif', '2016-01-08'),
+('PSN04', 'JUNANDIA', 'L', 'Islam  ', 'Jl.Karamat ', 'smi  ', '1998-02-21', '8565973569', '12358286_1198628856820656_119498568_n.jpg', '2016-01-27'),
+('PSN05', 'SAHA WAE', 'P', 'Budha', 'indonesia', 'sukabumi', '1970-01-01', '666', 'Screenshot_2.png', '2016-02-21');
+>>>>>>> origin/master
 
 --
 -- Indexes for dumped tables
@@ -244,7 +282,11 @@ ALTER TABLE `tbpasien`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
+<<<<<<< HEAD
   MODIFY `Kd_User` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+=======
+  MODIFY `Kd_User` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+>>>>>>> origin/master
 --
 -- AUTO_INCREMENT for table `poliklinik`
 --
@@ -254,7 +296,11 @@ ALTER TABLE `poliklinik`
 -- AUTO_INCREMENT for table `tbkunjungan`
 --
 ALTER TABLE `tbkunjungan`
+<<<<<<< HEAD
   MODIFY `IdKunjungan` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+=======
+  MODIFY `IdKunjungan` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+>>>>>>> origin/master
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

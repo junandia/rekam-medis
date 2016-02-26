@@ -28,7 +28,11 @@ if ($level == "3" || $level == "2") {
     $q = mysql_query("SELECT * FROM tbdokter JOIN poliklinik ON tbdokter.Kd_Poli = poliklinik.KdPoli WHERE Kd_Dokter = '$kd'") or die(mysql_error());
     $row = mysql_fetch_array($q);
     $title = "Ubah Data Dokter";
+<<<<<<< HEAD
     $action = "dokter/editproses.php";
+=======
+    $action = "dokter/tmbhproses.php";
+>>>>>>> origin/master
     $x = "";
     $a = $kd;
     $b = $row['NmDokter'];
@@ -46,7 +50,10 @@ if ($level == "3" || $level == "2") {
     $d = '';
     $e = '';
     $f = '';
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 }
 
 ?>
@@ -72,7 +79,11 @@ if ($level == "3" || $level == "2") {
                 <td>:</td>
                 <td>
                 <div class="input-control text">
+<<<<<<< HEAD
                 <input type="text" name="Kd_Dokter" value="<?php echo $a; ?>" <?php echo $x;?> readonly=""/>
+=======
+                <input type="text" name="Kd_Dokter" value="<?php echo $a; ?>" readonly=""/>
+>>>>>>> origin/master
                 </div>
                 </td>
             </tr>
@@ -96,7 +107,11 @@ if ($level == "3" || $level == "2") {
                 <td>Tanggal Lahir</td>
                 <td>:</td>
                 <td>
+<<<<<<< HEAD
                     <div class="input-control text" data-role="datepicker" data-date="1972-12-21" data-format="yyyy-mm-dd">
+=======
+                <div class="input-control text" data-role="datepicker">
+>>>>>>> origin/master
                 <input type="text" name="TglLahir" value="<?php echo $d; ?>" <?php echo $x; ?> /><button class="button"><span class="mif-calendar">
                 </div></td>
             </tr>
@@ -105,7 +120,11 @@ if ($level == "3" || $level == "2") {
                 <td>:</td>
                 <td>
                 <div class="input-control textarea" data-role="input" data-text-auto-resize="true">
+<<<<<<< HEAD
                     <textarea name="Alamat" <?php echo $x; ?>>
+=======
+                    <textarea name="Alamat" rows="4" cols="20" <?php echo $x; ?>>
+>>>>>>> origin/master
                     <?php echo $e; ?>
                     </textarea>
                 </div></td>
@@ -115,13 +134,21 @@ if ($level == "3" || $level == "2") {
                 <td>:</td>
                 <td>
                 <div class="input-control text">
+<<<<<<< HEAD
                 <input type="number" name="NoTelp" maxlength="14" value="<?php echo $f; ?>" <?php echo $x; ?>  />
+=======
+                <input type="number" name="NoTelp" value="<?php echo $f; ?>" <?php echo $x; ?> />
+>>>>>>> origin/master
                 </div></td>
             </tr>
             <tr>
                 <td>Poli</td>
                 <td>:</td>
+<<<<<<< HEAD
                 <td><div class="input-control select"><select name="Kd_Poli" <?php echo $x; ?>>
+=======
+                <td><div class="input-control select"><select name="Kd_Poli">
+>>>>>>> origin/master
                         <?php
                         $query = mysql_query("SELECT * FROM poliklinik");
                         while ($row = mysql_fetch_array($query)) {
@@ -140,18 +167,27 @@ if ($level == "3" || $level == "2") {
                 <input type="password" name="password" value="" <?php echo $x; ?> />
                 </div></td>
             </tr> 
+<<<<<<< HEAD
             <?php }
                 if ($level == "3" || $level == "2"){ ?>
                     <tr>
+=======
+            <?php } ?>
+                       
+            <tr>
+>>>>>>> origin/master
                 <td><input type="submit" value="<?php echo $v; ?>" name="tambah" /></td>
                 <td></td>
                 <td><input type="reset" value="Kosongkan" name="reset" /></td>
             </tr>
+<<<<<<< HEAD
             <?php
                 }
             ?>
                        
             
+=======
+>>>>>>> origin/master
         </tbody>
     </table>
 

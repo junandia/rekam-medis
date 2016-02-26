@@ -16,11 +16,15 @@ $kd_poli = $ro['Kd_Poli'];
     $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli WHERE TglKunjungan = '$now' AND tbkunjungan.KdPoli = '$kd_poli' ") or die(mysql_error());
 }
 else {
+<<<<<<< HEAD
     $cekpoliq = mysql_query("SELECT Kd_Poli FROM tbdokter WHERE Kd_User = '$_SESSION[Kd_User]'");
 $ro = mysql_fetch_array($cekpoliq);
 $kd_poli = $ro['Kd_Poli'];
 
      $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli AND tbkunjungan.KdPoli = '$kd_poli'");
+=======
+     $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli");
+>>>>>>> origin/master
 }
 ?>
     <table class="dataTable table cell-hovered border bordered" data-role="datatable" data-searching="true">

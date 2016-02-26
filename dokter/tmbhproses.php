@@ -8,7 +8,7 @@ include '../koneksi.php';
 $Kd_Dokter          = $_POST['Kd_Dokter'];
 $NmDokter           = strtoupper($_POST['NmDokter']);
 $TmpLahir           = $_POST['TmpLahir'];
-$TglLahir           = $_POST['TglLahir'];
+$TglLahir		    = date('Y-m-d', strtotime($_POST['TglLahir']));
 $Alamat             = $_POST['Alamat'];
 $NoTelp             = $_POST['NoTelp'];
 $Kd_Poli            = $_POST['Kd_Poli'];
@@ -25,6 +25,10 @@ $query = mysql_query("INSERT INTO tbdokter VALUES('$Kd_Dokter','$NmDokter','$Tmp
 $login = mysql_query("INSERT INTO login VALUES('$Kd_User','$username','$password','1','Y')") or die(mysql_error()); 
 
 if ($query && $login) {
+<<<<<<< HEAD
    echo "<script>alert('Dokter Berhasil Ditambahkan'); window.location='../index.php?page=./dokter/index';</script>";
+=======
+    echo "<script>alert('Dokter Berhasil Ditambahkan'); window.location='../index.php?page=./dokter/index';</script>";
+>>>>>>> origin/master
 }
 ?>

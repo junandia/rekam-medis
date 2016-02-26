@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 /* 
@@ -22,3 +23,6 @@ $level = $_SESSION['level'];
         </div>
     </div>
 </div>
+=======
+index kunjungan
+>>>>>>> origin/master
