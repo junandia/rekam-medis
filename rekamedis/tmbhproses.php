@@ -19,6 +19,6 @@ $Ket                = $_POST['Ket'];
 $query = "INSERT INTO `rekamedis`.`rekammedis` VALUES ('$No_Rm', '$No_Pasien', '$Kd_User', '$Diagnosa', '$Keluhan', '$Tgl_Pemeriksaan', '$Ket')";
 $aksi = mysql_query($query) or die(mysql_error());
 if ($aksi) {
-    echo "<script>alert('Data Berhasil Di Rekam'); window.location='../rekamedis.php?waktu=today'</script>";
+    echo "<script>alert('Data Berhasil Di Rekam'); window.location='../index.php?page=./rekamedis&waktu=today'</script>";
 }
 ?>

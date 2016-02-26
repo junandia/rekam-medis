@@ -26,7 +26,7 @@
     	<td>Apakah Pasien Pernah Berobat Disini?</td>
     </tr>
     <tr align="center">
-    	<td><button onclick="window.location='index.php?hal=tkunjungan';">Pernah</button> <button onclick="window.location='index.php?hal=tpasien';">Belum Pernah</button></td>
+    	<td><button class="button primary" onclick="window.location='index.php?page=./kunjungan/index';">Pernah</button> <button class="button warning" onclick="window.location='index.php?page=./pasien/index';">Belum Pernah</button></td>
     </tr>
     <?php
     }

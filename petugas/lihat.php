@@ -10,7 +10,7 @@ include 'koneksi.php';
 $query = mysql_query("SELECT * FROM petugas");
 ?>
 
-    <table id="table" border="1" width="50%" cellspacing="1" cellpadding="3">
+    <table class="dataTable table cell-hovered border bordered" data-role="datatable" data-searching="true">
     <thead>
         <tr>
             <td>Kode Petugas</td>
@@ -45,7 +45,7 @@ while ($r = mysql_fetch_array($query)) {
             <?php
             if ($level == "3"){
             ?>
-            <td><button onclick="window.location='index.php?hal=EditPetugas&KdPetugas=<?php echo $kd; ?>'">Edit</button> <button onclick="window.location='petugas/hapus.php?KdPetugas=<?php echo $kd; ?>'">Hapus</button></td>
+            <td><button class="button warning" onclick="window.location='index.php?page=./petugas/index&KdPetugas=<?php echo $kd; ?>'">Edit</button> <button class="button danger" onclick="window.location='petugas/hapus.php?KdPetugas=<?php echo $kd; ?>'">Hapus</button></td>
             <?php
             }
             ?>

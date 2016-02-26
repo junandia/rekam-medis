@@ -1,7 +1,7 @@
 <?php
 	include 'koneksi.php';
 	if (isset($_POST['login'])) {
-		$u = $_POST['username'];
+		$u = mysql_real_escape_string($_POST['username']);
 		$p = md5($_POST['password']);
 		$cekq = mysql_query("SELECT * FROM login WHERE Username='$u' AND Password='$p' AND aktif='Y'");
 		$cek = mysql_num_rows($cekq);
@@ -12,8 +12,8 @@
 			session_start();
 			$_SESSION['username'] = $u;
 			$_SESSION['password'] = $p;
-                        $_SESSION['level'] = $l;
-                        $_SESSION['Kd_User'] = $kd;
+            $_SESSION['level'] = $l;
+            $_SESSION['Kd_User'] = $kd;
 			header("location:index.php?hal=index");
 		}
 		else {
@@ -33,7 +33,7 @@
 
     <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
 
-    <title>Login form :: Metro UI CSS - The front-end framework for developing projects on the web in Windows Metro Style</title>
+    <title>Rekam Medis Login</title>
 
     <link rel="stylesheet" type="text/css" href="asset/css/metro.css">
     <link rel="stylesheet" type="text/css" href="asset/css/metro-icons.css">
@@ -62,19 +62,6 @@
         /*
         * Do not use this is a google analytics fro Metro UI CSS
         * */
-        if (window.location.hostname !== 'localhost') {
-
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-58849249-3', 'auto');
-            ga('send', 'pageview');
-
-        }
-
-
         $(function(){
             var form = $(".login-form");
 
@@ -91,51 +78,29 @@
 <body class="bg-darkTeal">
     <div class="login-form padding20 block-shadow">
         <form method="POST">
-            <h1 class="text-light">Login to service</h1>
+            <h1 class="text-light">Masuk Rekam Medis</h1>
             <hr class="thin"/>
             <br />
             <div class="input-control text full-size" data-role="input">
-                <label for="user_login">Username:</label>
+                <label for="user_login">Nama Pengguna:</label>
                 <input type="text" name="username" id="user_login">
                 <button class="button helper-button clear"><span class="mif-cross"></span></button>
             </div>
             <br />
             <br />
             <div class="input-control password full-size" data-role="input">
-                <label for="user_password">Password:</label>
+                <label for="user_password">Kata Sandi:</label>
                 <input type="password" name="password" id="user_password">
                 <button class="button helper-button reveal"><span class="mif-looks"></span></button>
             </div>
             <br />
             <br />
             <div class="form-actions">
-                <button type="submit" name="login" class="button primary">Login to...</button>
-                <button type="button" class="button link">Cancel</button>
+                <button type="submit" name="login" class="button primary">Masuk</button>
             </div>
         </form>
     </div>
 
-    <!-- hit.ua -->
-    <a href='http://hit.ua/?x=136046' target='_blank'>
-        <script language="javascript" type="text/javascript"><!--
-        Cd=document;Cr="&"+Math.random();Cp="&s=1";
-        Cd.cookie="b=b";if(Cd.cookie)Cp+="&c=1";
-        Cp+="&t="+(new Date()).getTimezoneOffset();
-        if(self!=top)Cp+="&f=1";
-        //--></script>
-        <script language="javascript1.1" type="text/javascript"><!--
-        if(navigator.javaEnabled())Cp+="&j=1";
-        //--></script>
-        <script language="javascript1.2" type="text/javascript"><!--
-        if(typeof(screen)!='undefined')Cp+="&w="+screen.width+"&h="+
-        screen.height+"&d="+(screen.colorDepth?screen.colorDepth:screen.pixelDepth);
-        //--></script>
-        <script language="javascript" type="text/javascript"><!--
-        Cd.write("<img src='http://c.hit.ua/hit?i=136046&g=0&x=2"+Cp+Cr+
-        "&r="+escape(Cd.referrer)+"&u="+escape(window.location.href)+
-        "' border='0' wi"+"dth='1' he"+"ight='1'/>");
-        //--></script></a>
-    <!-- / hit.ua -->
 
 
 </body>

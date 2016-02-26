@@ -5,13 +5,53 @@
  * Rismawan Junandia  * 
  */
 include 'koneksi.php';
-$query = mysql_query("SELECT * FROM tbpasien") or die(mysql_error());
-$cekq = mysql_num_rows($query);
-$norm = $cekq+01;
+$all = mysql_query("SELECT * FROM tbpasien WHERE tampil='1'") or die(mysql_error());
 if ($_SESSION['level'] == "3" || $_SESSION['level'] == "2") {
-    $x = "required";
+    $query = mysql_query("SELECT * FROM tbpasien") or die(mysql_error());
+    $cekq = mysql_num_rows($query);
+    $norm = $cekq+01;
+    if (!isset($_GET['NoPasien'])) {
+        $title = "Tambah Data Pasien";
+        $action = "pasien/tmbhproses.php";
+        $a = 'PSN0'.$norm;
+        $b = '';
+        $c = '';
+        $d = '';
+        $e = '';
+        $f = '';
+        $agm = '';
+        $x = "required";
+        $name = "Tambah";
+    }
+    else{
+        $nopasien = $_GET['NoPasien'];
+        $query = mysql_query("SELECT * FROM tbpasien WHERE NoPasien = '$nopasien'") or die(mysql_error());
+        $row = mysql_fetch_array($query);
+        $title = "Ubah Data Pasien";
+        $action = "pasien/editproses.php";
+        $a = $nopasien;
+        $b = $row['NmPasien'];
+        $c = $row['Alamat'];
+        $d = $row['Tmp_Lahir'];
+        $e = $row['Tgl_Lahir'];
+        $f = $row['No_Telp'];
+        $agm = $row['Agama'];
+        $x = "";
+        $name = "Ubah";
+    }
 }
+
 else {
+    $title = "Tambah Data Pasien";
+        $action = "pasien/tmbhproses.php";
+        $a = '';
+        $b = '';
+        $c = '';
+        $d = '';
+        $e = '';
+        $f = '';
+        $agm = '';
+        $name = "Tambah";
     $x = "disabled";
 }
 ?>
@@ -19,18 +59,25 @@ else {
         <div class="row cells5">
             <div class="cell colspan2">
 
-<form name="Tambah_Pasien" action="pasien/tmbhproses.php" method="POST" enctype="multipart/form-data">
+<form name="Tambah_Pasien" action="<?php echo $action;?>" method="POST" enctype="multipart/form-data">
     <table class="table border" cellspacing="1" cellpadding="3">
         <tbody>
-            <tr>
-                <td colspan="3">Tambah Data Pasien</td>
+        <?php
+                if ($_SESSION['level'] == "2" || $_SESSION['level'] == "3") {
+            ?>
+             <tr>
+                <td colspan="3"><input type="button" class="button primary" onclick="window.location='index.php?page=./pasien/index';" value="Tambah Pasien"><br/><font size="5px"><b>Form <?php echo $title; ?></b><font></td>
             </tr>
+            <?php
+                }
+            ?>
+           
             <tr>
                 <td>No Pasien</td>
                 <td>:</td>
                 <td>
                     <div class="input-control text">
-                    <input type="text" name="NoPasien" value="<?php echo "PSN0".$norm; ?>" readonly <?= $x ?> />
+                    <input type="text" name="NoPasien" value="<?php echo $a; ?>" readonly <?= $x ?> />
                     </div>
                 </td>
             </tr>
@@ -39,7 +86,7 @@ else {
                 <td>:</td>
                 <td>
                 <div class="input-control text">
-                    <input type="text" name="NmPasien" value="" <?= $x ?>  />
+                    <input type="text" name="NmPasien" value="<?php echo $b; ?>" <?= $x ?>  />
                 </div>
                 </td>
             </tr>
@@ -47,7 +94,27 @@ else {
                 <td>Jenis Kelamin</td>
                 <td>:</td>
                 <td>
-                <input type="radio" name="J_Kel" value="L" checked="checked" <?= $x ?>  /><span class="check"></span><span class="caption">L</span> <input type="radio" name="J_Kel" value="P" <?= $x ?>  /><span class="check"></span><span class="caption">P</span></td>
+                <?php
+                if (!isset($_GET['NoPasien'])) {
+                ?>
+                <input type="radio" name="J_Kel" value="L" checked="checked" <?= $x ?>  /><span class="check"></span><span class="caption">L</span> <input type="radio" name="J_Kel" value="P" <?= $x ?>  /><span class="check"></span><span class="caption">P</span>
+                <?php
+                }else{
+                    $jk =  $row['J_Kel'];
+                    if ($jk == "L") {
+                    ?>
+                    <input type="radio" name="J_Kel" value="L" checked="checked" />L <input type="radio" name="J_Kel" value="P" />P
+                    <?php
+                    }
+                    else {
+                    ?>
+                    <input type="radio" name="J_Kel" value="L"  />L <input type="radio" name="J_Kel" value="P" checked="checked" />P
+                    <?php
+                    }
+                }
+                ?>
+
+                </td>
             </tr>
             <tr>
                 <td>Agama</td>
@@ -55,6 +122,13 @@ else {
                 <td>
                 <div class="input-control select">
                     <select name="Agama" <?= $x ?> >
+                    <?php
+                        if (isset($_GET['NoPasien'])) {
+                    ?>
+                        <option value="<?php echo $agm; ?>"><?php echo $agm; ?></option>
+                    <?php
+                        }
+                    ?>
                         <option value="Islam">Islam</option>
                         <option value="Kristen Katolik">Kristen Katolik</option>
                         <option value="Kristen Protestan">Kristen Protestan</option>
@@ -70,7 +144,7 @@ else {
                 <td>:</td>
                 <td>
                 <div class="input-control textarea" data-role="input" data-text-auto-resize="true">
-                <textarea name="Alamat" rows="4" cols="20" <?= $x ?> ></textarea>
+                <textarea name="Alamat" rows="4" cols="20" <?= $x ?> ><?php echo $c; ?></textarea>
                 </div>
                 </td>
             </tr>
@@ -79,7 +153,7 @@ else {
                 <td>:</td>
                 <td>
                 <div class="input-control text">
-                <input type="text" name="Tmp_Lahir" value="" <?= $x ?>  />
+                <input type="text" name="Tmp_Lahir" value="<?php echo $d; ?>" <?= $x ?>  />
                 </div>
                 </td>
             </tr>
@@ -87,8 +161,8 @@ else {
                 <td>Tanggal Lahir</td>
                 <td>:</td>
                 <td>
-                    <div class="input-control text" data-role="datepicker">
-                        <input type="text" <?= $x ?> >
+                    <div class="input-control text" data-role="datepicker" data-date="1972-12-21" data-format="yyyy-mm-dd">
+                        <input type="text" name="Tgl_Lahir" <?= $x ?> value="<?php echo $e; ?>" >
                         <button class="button"><span class="mif-calendar"></span></button>
                     </div>
                 </td>
@@ -97,7 +171,7 @@ else {
                 <td>No Telpon</td>
                 <td>:</td>
                 <td><div class="input-control text">
-                <input type="number" name="No_Telp" value="" <?= $x ?>  maxlength="13" />
+                <input type="number" name="No_Telp" value="<?php echo $f; ?>" <?= $x ?>  maxlength="14" />
                 </div></td>
             </tr>
             <tr>
@@ -107,11 +181,18 @@ else {
                 <input type="file" name="Foto" value="" <?= $x ?>  /><button class="button"><span class="mif-folder"></span></button>
                 </div></td>
             </tr>
+            <?php
+                if ($_SESSION['level'] == "2" || $_SESSION['level'] == "3") {
+            ?>
             <tr>
-                <td><input type="submit" value="Tambah" name="tambah" /></td>
+                <td><input type="submit" value="<?php echo $name; ?>" name="tambah" /></td>
                 <td></td>
                 <td><input type="reset" value="Kosongkan" name="reset" /></td>
             </tr>
+            <?php
+                }
+            ?>
+            
         </tbody>
     </table>
 
@@ -137,10 +218,12 @@ else {
     </thead>
     <tbody>
 <?php
-while ($r = mysql_fetch_array($query)) {
+while ($r = mysql_fetch_array($all)) {
+    $no = $r['NoPasien'];
+
 ?>
         <tr>
-            <td><?php echo $nopasien = $r['NoPasien']; ?></td>
+            <td><a onclick="window.location='index.php?page=./pasien/detail&no=<?php echo $no; ?>'"><?php echo $no; ?></a></td>
             <td><?php echo $r['NmPasien']; ?></td>
             <td><?php echo $r['J_Kel']; ?></td>
             <td><img src="pasien/foto/<?php echo $r['Foto']; ?>" width="50" height="50"></td>
@@ -148,11 +231,10 @@ while ($r = mysql_fetch_array($query)) {
             <?php
             if ($_SESSION['level'] == "3" || $_SESSION['level'] == "2"){
             ?>
-            <td><button onclick="window.location='index.php?hal=EditPasien&NoPasien=<?php echo $nopasien; ?>'">Edit</button> <button onclick="window.location='pasien/hapus.php?NoPasien=<?php echo $nopasien; ?>'">Hapus</button></td>
+            <td><button class="button warning" onclick="window.location='index.php?page=./pasien/index&NoPasien=<?php echo $no; ?>'">Ubah</button> <button class="button danger" onclick="window.location='pasien/hapus.php?NoPasien=<?php echo $no; ?>'">Hapus</button></td>
             <?php
             }
             ?>
-        </tr>
         </tr>
 <?php 
 }

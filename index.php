@@ -7,16 +7,16 @@
  */
 include 'session.php';
 ?>
-<!DOCTYPE html>
 <html>
 <head>
-    <title>REKAM MEDIS</title>
+    <title>Sistem Informasi Rekam Medis</title>
     <link rel="stylesheet" type="text/css" href="asset/css/metro.css">
     <link rel="stylesheet" type="text/css" href="asset/css/metro-icons.css">
     <link rel="stylesheet" type="text/css" href="asset/css/metro-responsive.css">
     <script type="text/javascript" src="asset/js/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="asset/js/metro.js"></script>
     <script type="text/javascript" src="asset/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <?php

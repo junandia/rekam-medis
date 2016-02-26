@@ -8,24 +8,27 @@
 include 'koneksi.php';
 $now = date_default_timezone_get('Asia/Jakarta');
 $tgl = date("Y-m-d");
-$query = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli WHERE TglKunjungan = '$tgl'") or die(mysql_error());
+if($_SESSION['level'] == "3" || $_SESSION['level'] == "2"){
+$query = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli WHERE TglKunjungan = '$tgl'") or die(mysql_error());    
+}
+ else {
+$cekpoliq = mysql_query("SELECT Kd_Poli FROM tbdokter WHERE Kd_User = '$_SESSION[Kd_User]'");
+$ro = mysql_fetch_array($cekpoliq);
+$kd_poli = $ro['Kd_Poli'];
+$query = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli WHERE tbkunjungan.TglKunjungan = '$tgl' AND tbkunjungan.KdPoli = '$kd_poli'") or die(mysql_error());    
+
+}
 ?>
 
-    <table id="table" border="1"  cellspacing="1" cellpadding="3">
+    <table class="dataTable table cell-hovered border bordered" data-role="datatable" data-searching="true">
     <thead>
         <tr>
-            <td>Tanggal Kunjungan</td>
             <td>Nama Pasien</td>
             <td>Poliklinik</td>
             <td>Jam Kunjungan</td>
             <td>No Antrian</td>
             <?php
-            if ($level == "3"){
-            ?>
-            <td>Aksi</td>
-            <?php
-            }
-            elseif ($level == "2") {
+            if ($level == "3" || $level == "2"){
             ?>
             <td>Aksi</td>
             <?php
@@ -39,20 +42,14 @@ $query = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoP
 while ($r = mysql_fetch_array($query)) {
 ?>
         <tr>
-            <td><?php echo date('d M Y', strtotime($r['TglKunjungan'])); ?></td>
             <td><?php echo $r['NmPasien']; ?></td>
             <td><?php echo $r['NmPoli']; ?></td>
             <td><?php echo $r['JamKunjungan']; ?></td>
             <td><?php echo $r['No_Antrian']; ?></td>
             <?php
-            if ($level == "3"){
+            if ($level == "3" || $level == "2"){
             ?>
-            <td><button onclick="window.location='kunjungan/hapus.php?IdKunjungan=<?php echo $r['IdKunjungan']; ?>'">Hapus</button></td>
-            <?php
-            }
-            elseif ($level == "2") {
-            ?>
-            <td> <button onclick="window.location='kunjungan/hapus.php?IdKunjungan=<?php echo $r['IdKunjungan']; ?>'">Hapus</button></td>
+            <td><button class="button danger" onclick="window.location='kunjungan/hapus.php?IdKunjungan=<?php echo $r['IdKunjungan']; ?>'">Hapus</button></td>
             <?php
             }
             ?>

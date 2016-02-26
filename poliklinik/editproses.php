@@ -14,5 +14,5 @@ $query = "UPDATE `rekamedis`.`poliklinik` SET `NmPoli` = '$NmPoli' WHERE `polikl
 $aksi = mysql_query($query) or die(mysql_error());
 
 if ($aksi) {
-    echo "<script>alert('Data Berhasil Di Ubah'); window.location='../index.php?hal=lpoli';</script>";
+    echo "<script>alert('Data Berhasil Di Ubah'); window.location='../index.php?page=./poliklinik/index';</script>";
 }

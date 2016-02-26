@@ -13,7 +13,7 @@ $nopasien = $_GET['pasien'];
 ?>
 
 <form name="Tambah_Rekamedis" action="rekamedis/tmbhproses.php" method="POST" enctype="multipart/form-data">
-    <table border="0" width="80%" cellspacing="1" cellpadding="3">
+    <table class="table border" cellspacing="1" cellpadding="3">
         <tbody>
             <tr>
                 <td>No Rekam Medis</td>
@@ -43,7 +43,7 @@ $nopasien = $_GET['pasien'];
             <tr>
                 <td><input type="submit" value="Tambah" name="tambah" /></td>
                 <td></td>
-                <td><input type="reset" value="Reset" name="reset" /></td>
+                <td><input type="reset" value="Kosongkan" name="reset" /></td>
             </tr>
         </tbody>
     </table>

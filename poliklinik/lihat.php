@@ -10,10 +10,9 @@ include 'koneksi.php';
 $query = mysql_query("SELECT * FROM poliklinik");
 ?>
 
-    <table id="table" border="1" width="40%" cellspacing="1" cellpadding="3">
+    <table class="dataTable table cell-hovered border bordered" data-role="datatable" data-searching="true">
     <thead>
         <tr>
-            <td>Kode Poliklinik</td>
             <td>Nama Poliklinik</td>
             <?php
             if ($level == "3"){
@@ -27,14 +26,14 @@ $query = mysql_query("SELECT * FROM poliklinik");
     <tbody>
 <?php
 while ($r = mysql_fetch_array($query)) {
+    $kd = $r['KdPoli'];
 ?>
         <tr>
-            <td><?php echo $kd = $r['KdPoli']; ?></td>
             <td><?php echo $r['NmPoli']; ?></td>
             <?php
             if ($level == "3"){
             ?>
-            <td><button onclick="window.location='index.php?hal=EditPoli&KdPoli=<?php echo $kd; ?>'">Edit</button> <button onclick="window.location='poliklinik/hapus.php?KdPoli=<?php echo $kd; ?>'">Hapus</button></td>
+            <td><button class="button warning" onclick="window.location='index.php?page=./poliklinik/index&KdPoli=<?php echo $kd; ?>'">Edit</button> <button class="button danger" onclick="window.location='poliklinik/hapus.php?KdPoli=<?php echo $kd; ?>'">Hapus</button></td>
             <?php
             }
             ?>

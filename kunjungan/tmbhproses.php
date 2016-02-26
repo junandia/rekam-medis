@@ -28,6 +28,6 @@ $query = mysql_query("INSERT INTO `rekamedis`.`tbkunjungan` VALUES (NULL, '$TglK
 ") or die(mysql_error());
 
 if ($query) {
-    echo "<script>alert('Kunjungan Berhasil Ditambahkan'); window.location='../index.php?hal=lkunjungan';</script>";
+    echo "<script>alert('Kunjungan Berhasil Ditambahkan'); window.location='../index.php?page=./kunjungan/index';</script>";
 }
 ?>

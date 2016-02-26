@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 $norm = $_GET['norm'];
 $query = mysql_query("SELECT * FROM rekammedis, tbpasien WHERE No_Rm = '$norm'") or die(mysql_error());
 $row = mysql_fetch_array($query);
@@ -7,8 +7,8 @@ $row = mysql_fetch_array($query);
 ?>
 <html>
 <head>
-    <title>REKAM MEDIS PASIEN</title>
-    <meta charset="utf-8" />
+	<title>REKAM MEDIS PASIEN</title>
+	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    
      <style type="text/css">
@@ -30,7 +30,7 @@ $row = mysql_fetch_array($query);
   </style>
   <body>
  <div id="wrapshopcart">
-<center><p align='center'><img src="pasim.jpg" width="100" height="100"><h2>REKAM MEDIS PASIEN <BR/>RS PASIM PLUS KOTA SUKABUMI</h2></p>
+<center><p align='center'><img src="../pasim.jpg" width="100" height="100"><h2>REKAM MEDIS PASIEN <BR/>RS PASIM PLUS KOTA SUKABUMI</h2></p>
 <table width="100%" border="0">
     <tr>
         <td>No Rekam Medis</td>
@@ -62,9 +62,14 @@ $row = mysql_fetch_array($query);
         
         <td><?php echo $row['Ket']; ?></td>
     </tr>
-      <tr>
-        <td colspan="3"><button class="button primary" onclick="window.location = 'index.php?hal=lihatrekam&pasien=<?php echo $row['No_Pasien']; ?>'">Kembali</button> <a class="button primary" href="./rekamedis/cetak.php?norm=<?php echo $norm;?>" target="_blank"><span class="mif-printer"></span> Cetak</a></td>
-    </tr>
+  
 </table>
 </body>
 </html>
+
+<script>
+    window.load = print_d();
+    function print_d(){
+      window.print();
+    }
+  </script>

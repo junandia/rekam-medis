@@ -5,44 +5,25 @@
  * Rismawan Junandia  * 
  */
 include 'koneksi.php';
-include 'session.php';
 $waktu = $_GET['waktu'];
 $now = date('Y-m-d');
 $level = $_SESSION['level'];
 if ($waktu == "today") {
-    $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli WHERE TglKunjungan = '$now' ") or die(mysql_error());
+    $cekpoliq = mysql_query("SELECT Kd_Poli FROM tbdokter WHERE Kd_User = '$_SESSION[Kd_User]'");
+$ro = mysql_fetch_array($cekpoliq);
+$kd_poli = $ro['Kd_Poli'];
+
+    $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli WHERE TglKunjungan = '$now' AND tbkunjungan.KdPoli = '$kd_poli' ") or die(mysql_error());
 }
-elseif ($waktu == "alldata") {
-     $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli");
+else {
+    $cekpoliq = mysql_query("SELECT Kd_Poli FROM tbdokter WHERE Kd_User = '$_SESSION[Kd_User]'");
+$ro = mysql_fetch_array($cekpoliq);
+$kd_poli = $ro['Kd_Poli'];
+
+     $sql = mysql_query("SELECT * FROM tbkunjungan JOIN tbpasien ON tbkunjungan.NoPasien = tbpasien.NoPasien JOIN poliklinik ON tbkunjungan.KdPoli = poliklinik.KdPoli AND tbkunjungan.KdPoli = '$kd_poli'");
 }
 ?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Sistem Informasi Rekam Medis</title>
-        <link href="style.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="jquery.dataTables.min.css">
-        <script type="text/javascript" src="jquery.dataTables.min.js"></script>
-
-    </head>
-    <body>
-        <header>
-            <?php
-            $level = $_SESSION['level'];
-            if ($level == "3"){
-                include 'head/admin.php';
-            }
-            elseif ($level == "2") {
-                include 'head/petugas.php';
-            }
-            else {
-                include 'head/dokter.php';
-            }
-            ?>
-        </header>
-        <section id="content">
-
-<table id="table" border="1"  cellspacing="1" cellpadding="3">
+    <table class="dataTable table cell-hovered border bordered" data-role="datatable" data-searching="true">
     <thead>
         <tr>
             <td>Tanggal Kunjungan</td>
@@ -64,19 +45,13 @@ while ($r = mysql_fetch_array($sql)) {
             <td><?php echo $r['JamKunjungan']; ?></td>
             <td><?php echo $r['No_Antrian']; ?></td>
             <?php
-            if ($level == "3"){
+            if ($level == "3" || $level == "2"){
             ?>
-            <td><button onclick="window.location='kunjungan/hapus.php?IdKunjungan=<?php echo $r['IdKunjungan']; ?>'">Hapus</button></td>
+            <td><button class="button danger" onclick="window.location='kunjungan/hapus.php?IdKunjungan=<?php echo $r['IdKunjungan']; ?>'">Hapus</button></td>
             <?php
-            }
-            elseif ($level == "2") {
+            }else {
             ?>
-            <td><button onclick="window.location='kunjungan/hapus.php?IdKunjungan=<?php echo $r['IdKunjungan']; ?>'">Hapus</button></td>
-            <?php
-            }
-            else {
-            ?>
-            <td><button onclick="window.location = 'index.php?hal=lihatrekam&pasien=<?php echo $r['NoPasien']; ?>'">REKAM MEDIS</button> <button onclick="window.location = 'index.php?hal=rekamdata&pasien=<?php echo $r['NoPasien']; ?>'">TAMBAH</button></td>
+            <td><button class="button primary" onclick="window.location = 'index.php?page=./rekamedis/lihat&pasien=<?php echo $r['NoPasien']; ?>'">DATA</button> <button class="button primary" onclick="window.location = 'index.php?page=./rekamedis/tambah&pasien=<?php echo $r['NoPasien']; ?>'">TAMBAH</button></td>
             <?php
             }
             ?>
@@ -88,15 +63,3 @@ while ($r = mysql_fetch_array($sql)) {
 ?>
 </tbody>
     </table>
-            </section>
-
-        <script type="text/javascript">
-    $(document).ready(function(){
-    $('#table').DataTable();
-});
-    </script>
-        <footer>
-            © 2016 RS Pasim Sukabumi - <a href="about.html">Junandia Group</a>
-        </footer>
-    </body>
-</html>
