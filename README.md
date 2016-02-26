@@ -1,4 +1,4 @@
-# APLIKASI REKAM MEDIS
+# SISTEM INFORMASI REKAM MEDIS
 Ini adalah project Uji Kompetensi Kejuruan saya, semoga bermanfaat.
 <br/>
 Rismawan Junandia
